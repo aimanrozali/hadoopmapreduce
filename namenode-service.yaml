@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: namenode-host
+spec:
+  selector:
+    app: namenode
+  ports:
+    - name: coremaster
+      protocol: "TCP"
+      port: 8020
+      targetPort: 8020
+    - name: webapp
+      protocol: "TCP"
+      port: 19888
+      targetPort: 19888
+    - name: rm
+      protocol: "TCP"
+      port: 5009
+      targetPort: 5009

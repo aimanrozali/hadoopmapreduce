@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hadoop-slave
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hadoop-slave
+  template:
+    metadata:
+      labels:
+        app: hadoop-slave
+    spec:
+      containers:
+      - name: hadoop-slave
+        image: amnrz/hadoop-slave:version1
+        command: ["/bin/bash", "-c", "service ssh start && hdfs datanode && yarn nodemanager && tail -f /dev/null"]
